@@ -4,15 +4,15 @@
 主要用CocoaPods来实现组件化。
 
 ## 模块化有哪些方式？
-- **Cocoapods**
+- *Cocoapods*
   不多赘述
 
-- **Projects**
+- *Projects*
 
-- **Github黑科技**
+- *Github黑科技*
 
 ## 为什么要模块化？
-- **Swift编译速度问题**
+- *Swift编译速度问题*
   Swift项目写过的都懂，一段时间后编译奇慢无比。可以仿照Uber开启`whole module optimization`。开启过后编译会以module为粒度。
 
 - **各模块解耦**
