@@ -61,11 +61,13 @@ import XXUIKit
 
 ### 配置资源
 - 设置源码位置
+
 podspec中编辑一下，选择你的源码文件夹
 ```
 s.source_files  = "Classes", "*.{h,m,swift}"
 ```
 - 设置图片等静态资源
+
 还是podspec
 ```
 s.resources = "*.{sks,xcassets,atlas,png,bundle}"
@@ -88,6 +90,7 @@ do {
 pod 'XXUIKit',:path => 'xxxx'
 ```
 - git上的模块
+
 	podspec必须放在根目录
 ```
 pod 'XXUIKit',:git => 'xxxx'
