@@ -1,29 +1,30 @@
-# iOS组件化
+# iOS模块化
+>从第一代码农写下第一行代码开始到上个世纪的80年代的软件危机，码农一直在考虑一个问题，怎么让写代码容易。在PC软代时代就已经有解决这个问题的法宝－－组件化。当然那时候不是那么叫的，是通过两个原则来规范这个问题的，这两个原则就是：内聚性和耦合性。在iOS开发中，我们换一个称呼，叫做模块化。
 
 主要用CocoaPods来实现组件化。
 
-## 组件化有哪些方式？
-- Cocoapods
+## 模块化有哪些方式？
+- **Cocoapods**
   不多赘述
 
-- Projects
+- **Projects**
 
-- Github黑科技
+- **Github黑科技**
 
-## 为什么要组件化？
-- Swift编译速度问题
-	Swift项目写过的都懂，一段时间后编译奇慢无比。可以仿照Uber开启`whole module optimization`。开启过后编译会以module为粒度。
+## 为什么要模块化？
+- **Swift编译速度问题**
+  Swift项目写过的都懂，一段时间后编译奇慢无比。可以仿照Uber开启`whole module optimization`。开启过后编译会以module为粒度。
 
-- 各模块解耦
+- **各模块解耦**
   - 便于Debug
   - 便于后续扩展
 
 ## 项目应该分为哪些模块？
-- XXUIKit
+- **XXUIKit**
   里面主要放工程中定义的一些颜色、UI有关的宏、扩展等等。
-- 独立的UI控件
+- **独立的UI控件**
   常用的包括下拉控件、相册、搜索（历史记录存储、展示）、下载等等都可以作为独立项目维护，所用的资源也可以建立相关的bundle、assets等来管理。
-- 各类与业务无强相关的算法
+- **各类与业务无强相关的算法**
   算法都独立出来便于多平台共享。
 
 ## 我们该怎么做？
@@ -50,18 +51,18 @@ import XXUIKit
 ```
 ### 模块中的开放类、方法、属性添加访问修饰符
 封装成库后，项目中再调属于跨模块调用，默认的internal访问不到，所以我们得把原来的类改写一下。
-- class：用open修饰
-- property: 用public修饰
-- function: 用open修饰
+- **class**：用open修饰
+- **property**: 用public修饰
+- **function**: 用open修饰
 
 ### 配置资源
-- 设置源码位置
-podspec中编辑一下，选择你的源码文件夹
+- **设置源码位置**
+  podspec中编辑一下，选择你的源码文件夹
 ```
 s.source_files  = "Classes", "*.{h,m,swift}"
 ```
-- 设置图片等静态资源
-还是podspec
+- **设置图片等静态资源**
+  还是podspec
 ```
 s.resources = "*.{sks,xcassets,atlas,png,bundle}"
 ```
@@ -78,21 +79,19 @@ do {
 ```
 
 ### 项目中导入独立模块
-- 本地模块
+- **本地模块**
 ```
 pod 'XXUIKit',:path => 'xxxx'
 ```
-- git上的模块
-	podspec必须放在根目录
+- **git上的模块**
+  podspec必须放在根目录
 ```
 pod 'XXUIKit',:git => 'xxxx'
 ```
 ## 我还要满足产品的其他很多要求，点击统计怎么办？
+
 我们可以在独立的模块中回调出来，在胶水类中进行处理，回调方式大家都明白
-- block
-
-- delegate
-
-- notification
-
+- **block**
+- **delegate**
+- **notification**
 
