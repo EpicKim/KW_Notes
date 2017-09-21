@@ -3,28 +3,28 @@
 主要用CocoaPods来实现模块化。
 
 ## 模块化有哪些方式？
-- Cocoapods
+- **Cocoapods**
 
   不多赘述
 
-- Projects
+- **Projects**
 
-- Github黑科技
+- **Github黑科技**
 
 ## 为什么要模块化？
-- Swift编译速度问题
+- **Swift编译速度问题**
 
 	Swift项目写过的都懂，一段时间后编译奇慢无比。可以仿照Uber开启`whole module optimization`。开启过后编译会以module为粒度。
 
-- 各模块解耦
-  - 便于Debug
-  - 便于后续扩展
+- *各模块解耦*
+  - *便于Debug*
+  - *便于后续扩展*
 
 ## 项目应该分为哪些模块？
-- XXUIKit
+- **XXUIKit**
 
   里面主要放工程中定义的一些颜色、UI有关的宏、扩展等等。
-- 独立的UI控件
+- **独立的UI控件**
 
   常用的包括下拉控件、相册、搜索（历史记录存储、展示）、下载等等都可以作为独立项目维护，所用的资源也可以建立相关的bundle、assets等来管理。
 - 各类与业务无强相关的算法
@@ -55,18 +55,18 @@ import XXUIKit
 ```
 ### 模块中的开放类、方法、属性添加访问修饰符
 封装成库后，项目中再调属于跨模块调用，默认的internal访问不到，所以我们得把原来的类改写一下。
-- class：用open修饰
-- property: 用public修饰
-- function: 用open修饰
+- **class**：用open修饰
+- **property**: 用public修饰
+- **function**: 用open修饰
 
 ### 配置资源
-- 设置源码位置
+- **设置源码位置**
 
 podspec中编辑一下，选择你的源码文件夹
 ```
 s.source_files  = "Classes", "*.{h,m,swift}"
 ```
-- 设置图片等静态资源
+- **设置图片等静态资源**
 
 还是podspec
 ```
@@ -85,11 +85,11 @@ do {
 ```
 
 ### 项目中导入独立模块
-- 本地模块
+- **本地模块**
 ```
 pod 'XXUIKit',:path => 'xxxx'
 ```
-- git上的模块
+- **git上的模块**
 
 	podspec必须放在根目录
 ```
@@ -97,8 +97,8 @@ pod 'XXUIKit',:git => 'xxxx'
 ```
 ## 我还要满足产品的其他很多要求，点击统计怎么办？
 我们可以在独立的模块中回调出来，在胶水类中进行处理，回调方式大家都明白
-- block
+- **block**
 
-- delegate
+- **delegate**
 
-- notification
+- **notification**
