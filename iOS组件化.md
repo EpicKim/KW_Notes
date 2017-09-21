@@ -79,7 +79,9 @@ do {
 
 ### 项目中导入独立模块
 - 本地模块
+```
 pod 'XXUIKit',:path => 'xxxx'
+```
 - git上的模块
 	podspec必须放在根目录
 ```
