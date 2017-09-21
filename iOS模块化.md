@@ -16,9 +16,9 @@
 
 	Swift项目写过的都懂，一段时间后编译奇慢无比。可以仿照Uber开启`whole module optimization`。开启过后编译会以module为粒度。
 
-- *各模块解耦*
-  - *便于Debug*
-  - *便于后续扩展*
+- **各模块解耦**
+  1. *便于Debug*
+  2. *便于后续扩展*
 
 ## 项目应该分为哪些模块？
 - **XXUIKit**
