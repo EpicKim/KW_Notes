@@ -9,7 +9,7 @@
 
 - **Projects**
 
-参考firefox-Swift的做法,用workspace管理多个project
+参考[firefox-Swift](https://github.com/mozilla-mobile/firefox-ios)的做法,用workspace管理多个project
 
 ![][image-1]
 
