@@ -118,15 +118,19 @@ pod 'XXUIKit',:git => 'xxxx'
 一个 APP 有多个模块，模块之间会通信，互相调用，例如微信读书有 书籍详情 想法列表 阅读器 发现卡片 等等模块，这些模块会互相调用，例如 书籍详情要调起阅读器和想法列表，阅读器要调起想法列表和书籍详情，等等，一般我们是怎样调用呢，以阅读器为例，会这样写：
 ```
 - (void)gotoDetail {
-	WRBookDetailViewController *detailVC = [[WRBookDetailViewController alloc] initWithBookId:self.bookId];
-	 [self.navigationController pushViewController:detailVC animated:YES];
+    WRBookDetailViewController *detailVC = [[WRBookDetailViewController alloc] initWithBookId:self.bookId];
+     [self.navigationController pushViewController:detailVC animated:YES];
 }
 ```
 看起来挺好，这样做简单明了，没有多余的东西，项目初期推荐这样快速开发，但到了项目越来越庞大，这种方式会有什么问题呢？显而易见，每个模块都离不开其他模块，互相依赖粘在一起成为一坨：
 这样揉成一坨对测试/编译/开发效率/后续扩展都有一些坏处，那怎么解开这一坨呢。很简单，按软件工程的思路，下意识就会加一个中间层：
-![][1]
-具体方案可以参考蘑菇街的 [MGJRouter](https://github.com/meili/MGJRouter)
+![][image-2]
+具体方案可以参考蘑菇街的 [MGJRouter][1]
 
-[1]:	http://blog.cnbang.net/wp-content/uploads/2016/03/component2-1024x597.png "中间件"
+MGJRouter实现文章可以参考[][2]
+
+[1]:	https://github.com/meili/MGJRouter
+[2]:	https://juejin.im/entry/57ee1efe2e958a00554132bb "组件化架构漫谈"
 
 [image-1]:	http://chuantu.biz/t6/58/1506058186x3728889954.png "firefox项目"
+[image-2]:	http://blog.cnbang.net/wp-content/uploads/2016/03/component2-1024x597.png "中间件"
