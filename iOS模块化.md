@@ -1,6 +1,6 @@
 # iOS开发模块化
 > 从第一代码农写下第一行代码开始到上个世纪的80年代的软件危机，码农一直在考虑一个问题，怎么让写代码容易。在PC软代时代就已经有解决这个问题的法宝－－组件化。当然那时候不是那么叫的，是通过两个原则来规范这个问题的，这两个原则就是：内聚性和耦合性。在iOS开发中，我们换一个称呼，叫做模块化。
-主要用CocoaPods来实现模块化。
+> 主要用CocoaPods来实现模块化。
 
 ## 模块化有哪些方式？
 - **Cocoapods**
@@ -24,7 +24,7 @@
 ## 为什么要模块化？
 - **Swift编译速度问题**
 
-	Swift项目写过的都懂，一段时间后编译奇慢无比。可以仿照Uber开启`whole module optimization`。开启过后编译会以module为粒度。
+  Swift项目写过的都懂，一段时间后编译奇慢无比。可以仿照Uber开启`whole module optimization`。开启过后编译会以module为粒度。
 
 - **各模块解耦**
   - *便于Debug*
@@ -101,7 +101,7 @@ pod 'XXUIKit',:path => 'xxxx'
 ```
 - **git上的模块**
 
-	podspec必须放在根目录
+  podspec必须放在根目录
 ```
 pod 'XXUIKit',:git => 'xxxx'
 ```
@@ -127,10 +127,10 @@ pod 'XXUIKit',:git => 'xxxx'
 ![][image-2]
 具体方案可以参考蘑菇街的 [MGJRouter][1]
 
-MGJRouter实现文章可以参考[][2]
+`MGJRouter`实现文章可以参考[组件化架构漫谈](https://juejin.im/entry/57ee1efe2e958a00554132bb)
 
 [1]:	https://github.com/meili/MGJRouter
-[2]:	https://juejin.im/entry/57ee1efe2e958a00554132bb "组件化架构漫谈"
+[4]:	https://juejin.im/entry/57ee1efe2e958a00554132bb
 
 [image-1]:	http://chuantu.biz/t6/58/1506058186x3728889954.png "firefox项目"
 [image-2]:	http://blog.cnbang.net/wp-content/uploads/2016/03/component2-1024x597.png "中间件"
