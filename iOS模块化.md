@@ -1,11 +1,10 @@
 # iOS开发模块化
 > 从第一代码农写下第一行代码开始到上个世纪的80年代的软件危机，码农一直在考虑一个问题，怎么让写代码容易。在PC软代时代就已经有解决这个问题的法宝－－组件化。当然那时候不是那么叫的，是通过两个原则来规范这个问题的，这两个原则就是：内聚性和耦合性。在iOS开发中，我们换一个称呼，叫做模块化。
-> 主要用CocoaPods来实现模块化。
 
 ## 模块化有哪些方式？
 - **Cocoapods**
 
-  不多赘述
+  不多赘述，管理库事实上的标准，也是这篇文章实现模块化用到的主要技术。
 
 - **Projects**
 
@@ -15,13 +14,12 @@
 
 新增一个module就新建一个project，类型选`Cocoa Touch framework`，编译过后主project `build phase`中引用即可。
 
-- **Github黑科技**
 
 
 
 - **Carthage**
 
-过于难用，所以这里不讨论
+过于难用和反人类，所以这里不讨论
 
 ## 为什么要模块化？
 - **Swift编译速度问题**
@@ -52,10 +50,13 @@ pod spec create 你的模块名
 ```
 我们会得到一个xx.podspec，这是我们的Pods库管理文件，编辑即可配置我们的库。
 
-### 各模块确定依赖关系
+### 各模块建立依赖关系
+
+比如我某个UI控件想用`Autolayout`，那么我们可以依赖`SnapKit`
+
   podspec中找到这个字段进行相关配置即可
 ```
-s.dependency "JSONKit", "~> 1.4"
+s.dependency "Snapkit", "~> 2.0"
 ```
 也可以引用其他本地的pods库，比如我们要在某个UI控件中使用项目统一的主题色。
 ```
@@ -107,7 +108,10 @@ pod 'XXUIKit',:path => 'xxxx'
 ```
 pod 'XXUIKit',:git => 'xxxx'
 ```
+非常独立的模块可以都放到git服务器上作为独立项目维护，然后用Cocoapods导进来。
+
 ## 我还要满足产品的其他很多要求，点击统计怎么办？
+
 我们可以在独立的模块中回调出来，在胶水类中进行处理，回调方式大家都明白
 - **block**
 
@@ -127,9 +131,9 @@ pod 'XXUIKit',:git => 'xxxx'
 看起来挺好，这样做简单明了，没有多余的东西，项目初期推荐这样快速开发，但到了项目越来越庞大，这种方式会有什么问题呢？显而易见，每个模块都离不开其他模块，互相依赖粘在一起成为一坨：
 这样揉成一坨对测试/编译/开发效率/后续扩展都有一些坏处，那怎么解开这一坨呢。很简单，按软件工程的思路，下意识就会加一个中间层：
 ![][image-2]
-具体方案可以参考蘑菇街的 [MGJRouter](https://github.com/meili/MGJRouter)
+方案有很多，个人偏向蘑菇街的 [MGJRouter](https://github.com/meili/MGJRouter)
 
-`MGJRouter`实现文章可以参考[组件化架构漫谈](https://juejin.im/entry/57ee1efe2e958a00554132bb)
+`MGJRouter`及几种方案的对比可以参考[组件化架构漫谈](https://juejin.im/entry/57ee1efe2e958a00554132bb)
 
 [4]:	https://juejin.im/entry/57ee1efe2e958a00554132bb
 
