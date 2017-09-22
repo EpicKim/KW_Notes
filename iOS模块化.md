@@ -4,13 +4,13 @@
 ## 模块化有哪些方式？
 - **Cocoapods**
 
-  不多赘述，管理库事实上的标准，也是这篇文章实现模块化用到的主要技术。
+  管理库事实上的标准，也是这篇文章实现模块化用到的主要技术。
 
 - **Projects**
 
 参考[firefox-Swift](https://github.com/mozilla-mobile/firefox-ios)的做法,用workspace管理多个project
 
-![][image-1]
+![Firefox项目](http://chuantu.biz/t6/58/1506058186x3728889954.png)
 
 新增一个module就新建一个project，类型选`Cocoa Touch framework`，编译过后主project `build phase`中引用即可。
 
@@ -19,16 +19,18 @@
 
 - **Carthage**
 
-过于难用和反人类，所以这里不讨论
+用着难受、反人类，所以这里不讨论。
 
 ## 为什么要模块化？
 - **Swift编译速度问题**
 
   Swift项目写过的都懂，一段时间后编译奇慢无比。可以仿照Uber开启`whole module optimization`。开启过后编译会以module为粒度。
 
+  比如UI要换个颜色，我们只需要修改`XXUIKit`里的颜色配置，编译也只会重新编译这个Module，不用等好几分钟的时间。
+
 - **各模块解耦**
-  - *便于Debug*
-  - *便于后续扩展*
+  - 便于Debug
+  - 便于后续扩展
 
 ## 项目应该分为哪些模块？
 - **XXUIKit**
@@ -130,12 +132,8 @@ pod 'XXUIKit',:git => 'xxxx'
 ```
 看起来挺好，这样做简单明了，没有多余的东西，项目初期推荐这样快速开发，但到了项目越来越庞大，这种方式会有什么问题呢？显而易见，每个模块都离不开其他模块，互相依赖粘在一起成为一坨：
 这样揉成一坨对测试/编译/开发效率/后续扩展都有一些坏处，那怎么解开这一坨呢。很简单，按软件工程的思路，下意识就会加一个中间层：
-![][image-2]
+![中间件](http://blog.cnbang.net/wp-content/uploads/2016/03/component2-1024x597.png )
 方案有很多，个人偏向蘑菇街的 [MGJRouter](https://github.com/meili/MGJRouter)
 
 `MGJRouter`及几种方案的对比可以参考[组件化架构漫谈](https://juejin.im/entry/57ee1efe2e958a00554132bb)
 
-[4]:	https://juejin.im/entry/57ee1efe2e958a00554132bb
-
-[image-1]:	http://chuantu.biz/t6/58/1506058186x3728889954.png "firefox项目"
-[image-2]:	http://blog.cnbang.net/wp-content/uploads/2016/03/component2-1024x597.png "中间件"
