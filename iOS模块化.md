@@ -14,9 +14,6 @@
 
 新增一个module就新建一个project，类型选`Cocoa Touch framework`，编译过后主project `build phase`中引用即可。
 
-
-
-
 - **Carthage**
 
 用着难受、反人类，所以这里不讨论。
