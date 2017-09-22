@@ -12,6 +12,7 @@
 参考firefox-Swift的做法,用workspace管理多个project
 
 ![][image-1]
+
 新增一个module就新建一个project，类型选`Cocoa Touch framework`，编译过后主project `build phase`中引用即可。
 
 - **Github黑科技**
