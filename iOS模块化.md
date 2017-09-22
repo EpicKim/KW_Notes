@@ -9,7 +9,17 @@
 
 - **Projects**
 
+参考firefox-Swift的做法,用workspace管理多个project
+![][image-1]
+新增一个module就新建一个project，类型选`Cocoa Touch framework`，编译过后主project `build phase`中引用即可。
+
 - **Github黑科技**
+
+
+
+- **Carthage**
+
+过于难用，所以这里不讨论
 
 ## 为什么要模块化？
 - **Swift编译速度问题**
@@ -17,8 +27,8 @@
 	Swift项目写过的都懂，一段时间后编译奇慢无比。可以仿照Uber开启`whole module optimization`。开启过后编译会以module为粒度。
 
 - **各模块解耦**
-  1. *便于Debug*
-  2. *便于后续扩展*
+  - *便于Debug*
+  - *便于后续扩展*
 
 ## 项目应该分为哪些模块？
 - **XXUIKit**
@@ -102,3 +112,21 @@ pod 'XXUIKit',:git => 'xxxx'
 - **delegate**
 
 - **notification**
+
+## 模块间相互通信怎么处理？
+
+一个 APP 有多个模块，模块之间会通信，互相调用，例如微信读书有 书籍详情 想法列表 阅读器 发现卡片 等等模块，这些模块会互相调用，例如 书籍详情要调起阅读器和想法列表，阅读器要调起想法列表和书籍详情，等等，一般我们是怎样调用呢，以阅读器为例，会这样写：
+```
+- (void)gotoDetail {
+	WRBookDetailViewController *detailVC = [[WRBookDetailViewController alloc] initWithBookId:self.bookId];
+	 [self.navigationController pushViewController:detailVC animated:YES];
+}
+```
+看起来挺好，这样做简单明了，没有多余的东西，项目初期推荐这样快速开发，但到了项目越来越庞大，这种方式会有什么问题呢？显而易见，每个模块都离不开其他模块，互相依赖粘在一起成为一坨：
+这样揉成一坨对测试/编译/开发效率/后续扩展都有一些坏处，那怎么解开这一坨呢。很简单，按软件工程的思路，下意识就会加一个中间层：
+![][1]
+具体方案可以参考蘑菇街的 [MGJRouter](https://github.com/meili/MGJRouter)
+
+[1]:	http://blog.cnbang.net/wp-content/uploads/2016/03/component2-1024x597.png "中间件"
+
+[image-1]:	http://chuantu.biz/t6/58/1506058186x3728889954.png "firefox项目"
