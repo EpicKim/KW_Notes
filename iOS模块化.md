@@ -10,6 +10,7 @@
 - **Projects**
 
 参考firefox-Swift的做法,用workspace管理多个project
+
 ![][image-1]
 新增一个module就新建一个project，类型选`Cocoa Touch framework`，编译过后主project `build phase`中引用即可。
 
@@ -125,11 +126,10 @@ pod 'XXUIKit',:git => 'xxxx'
 看起来挺好，这样做简单明了，没有多余的东西，项目初期推荐这样快速开发，但到了项目越来越庞大，这种方式会有什么问题呢？显而易见，每个模块都离不开其他模块，互相依赖粘在一起成为一坨：
 这样揉成一坨对测试/编译/开发效率/后续扩展都有一些坏处，那怎么解开这一坨呢。很简单，按软件工程的思路，下意识就会加一个中间层：
 ![][image-2]
-具体方案可以参考蘑菇街的 [MGJRouter][1]
+具体方案可以参考蘑菇街的 [MGJRouter](https://github.com/meili/MGJRouter)
 
 `MGJRouter`实现文章可以参考[组件化架构漫谈](https://juejin.im/entry/57ee1efe2e958a00554132bb)
 
-[1]:	https://github.com/meili/MGJRouter
 [4]:	https://juejin.im/entry/57ee1efe2e958a00554132bb
 
 [image-1]:	http://chuantu.biz/t6/58/1506058186x3728889954.png "firefox项目"
