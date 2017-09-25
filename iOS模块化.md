@@ -132,5 +132,19 @@ pod 'XXUIKit',:git => 'xxxx'
 ![中间件](http://blog.cnbang.net/wp-content/uploads/2016/03/component2-1024x597.png )
 方案有很多，个人偏向蘑菇街的 [MGJRouter](https://github.com/meili/MGJRouter)
 
+胶水类里可以这么做来注册。
+
+```
+[MGJRouter registerURLPattern:@"mgj://category/travel" toHandler:^(NSDictionary *routerParameters) {
+        [self appendLog:@"匹配到了 url，以下是相关信息"];
+​        [self appendLog:[NSString stringWithFormat:@"routerParameters:%@", routerParameters]];
+​    }];
+```
+其他模块中这样调用
+```
+[MGJRouter openURL:@"mgj://category/travel" withUserInfo:@{@"user_id": @1900} completion:nil];
+```
+`routerParameters`中可以跨模块传递各种参数，handler中可以初始化viewController等。
+
 `MGJRouter`及几种方案的对比可以参考[组件化架构漫谈](https://juejin.im/entry/57ee1efe2e958a00554132bb)
 
