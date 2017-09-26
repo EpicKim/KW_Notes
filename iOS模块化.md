@@ -150,4 +150,5 @@ pod 'XXUIKit',:git => 'xxxx'
 
 ## 其他问题
 
-- Cocoapods老版本有重复编译的问题，明明库文件没有更新，然而主工程进行rebuild，[issue4495](https://github.com/CocoaPods/CocoaPods/issues/4495)里解决了，升级最新1.3.1+即可
+- Cocoapods老版本有重复编译的问题，明明库文件没有更新，然而执行`pod install`主工程进行rebuild，[issue4495](https://github.com/CocoaPods/CocoaPods/issues/4495)里解决了，升级最新1.3.1+即可
+
