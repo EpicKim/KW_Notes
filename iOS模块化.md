@@ -16,7 +16,7 @@
 
 - **Carthage**
 
-用着难受、反人类，所以这里不讨论。
+缺点很多，不一一说了，一个项目尽量统一标准。
 
 ## 为什么要模块化？
 - **Swift编译速度问题**
@@ -148,3 +148,6 @@ pod 'XXUIKit',:git => 'xxxx'
 
 `MGJRouter`及几种方案的对比可以参考[组件化架构漫谈](https://juejin.im/entry/57ee1efe2e958a00554132bb)
 
+## 其他问题
+
+- Cocoapods老版本有重复编译的问题，明明库文件没有更新，然而主工程进行rebuild，[issue4495](https://github.com/CocoaPods/CocoaPods/issues/4495)里解决了，升级最新1.3.1+即可
