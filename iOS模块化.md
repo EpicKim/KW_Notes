@@ -19,6 +19,7 @@
 缺点很多，不一一说了，一个项目尽量统一标准。
 
 ## 为什么要模块化？
+
 - **Swift编译速度问题**
 
   Swift项目写过的都懂，一段时间后编译奇慢无比。可以仿照Uber开启`whole module optimization`。开启过后编译会以module为粒度。
